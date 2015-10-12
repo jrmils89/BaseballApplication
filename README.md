@@ -7,6 +7,9 @@ Things you may want to cover:
 
 * Ruby version
 
+	ruby 2.2.0p0 (2014-12-25 revision 49005) [x86_64-darwin14]
+	Rails 4.2.0
+
 * System dependencies
 
 * Configuration
