@@ -14,3 +14,6 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+//= require heatmap/heatmap
+//= require heatmap/render-heatmap
+//= require heatmap/draw-strikezone
