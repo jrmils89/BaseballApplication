@@ -1,8 +1,10 @@
-<div id="heatmapContainer">
+<div class="heatmapContainer">
     <%= javascript_tag do %>
     // create configuration object
 var config = {
-  container: document.getElementById('heatmapContainer'),
+  container: document.getElementsByClassName('heatmapContainer')[0],
+  height: document.getElementsByClassName('heatmapContainer')[0].clientHeight,
+  width: document.getElementsByClassName('heatmapContainer')[0].clientWidth,
   radius: 20,
   maxOpacity: .5,
   minOpacity: 0,
@@ -10,7 +12,6 @@ var config = {
 };
 // create heatmap with configuration
 var heatmapInstance = h337.create(config);
-
 
 var data = {
   max: 2.1,
@@ -615,6 +616,7 @@ var data = {
 	{x: 186, y:254, value:0},
   ]
 };
+
 
 heatmapInstance.setData(data);
     <% end %>

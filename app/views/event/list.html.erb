@@ -1,0 +1,131 @@
+<h1>Listing Events</h1>
+<%= form_tag("/event_list", method: "get") do %>
+  <%= label_tag(:batter, "Batter:") %>
+  <%= number_field_tag(:batter) %>
+  <%= label_tag(:game_year, "Game Year:") %>
+  <%= number_field_tag(:game_year) %>
+  <%= submit_tag("Search") %>
+<% end %>
+
+<div class="heatmapWrapper">
+<div class="heatmapContainer" id="heatmap">
+
+  <%= javascript_tag do %>
+    // create configuration object
+    var height = document.getElementsByClassName('heatmapContainer')[0].clientHeight;
+    var width = document.getElementsByClassName('heatmapContainer')[0].clientWidth;
+var config = {
+  container: document.getElementById('heatmap'),
+  height: height,
+  width: width,
+  radius: 40,
+  maxOpacity: .5,
+  minOpacity: 0,
+  gradient:{ 0.333: "#0000FF", 0.600: "#00FFFF", 0.7500: "#00FF00", 0.93: "#FFFF00", 0.97: "#ff8d00", 0.99: "#FF0000"},
+};
+// create heatmap with configuration
+var heatmapInstance = h337.create(config);
+
+var data = {
+  max: 6,
+  min: 0,
+  data: [
+		<% @events.try(:each) do |event| %>
+		{ x: <%= event.px.to_json.html_safe %>*100+width/2
+		, y: <%= event.pz.to_json.html_safe %>*-100+height/.87
+		, value: <%= event.event_count.to_json.html_safe %> },
+	<% end %>
+  ]
+};
+
+
+heatmapInstance.setData(data);
+
+    <% end %>
+
+
+	<canvas id="strike-zone" height="400" width="400">
+		<%= javascript_tag do %>
+
+		    var height = document.getElementsByClassName('heatmapContainer')[0].clientHeight;
+    		var width = document.getElementsByClassName('heatmapContainer')[0].clientWidth;
+
+
+			var c = document.getElementById("strike-zone");
+			var ctx = c.getContext("2d");
+			ctx.beginPath();
+			ctx.moveTo((-1*100+width/2), 3.5*-100+height/.87);
+			ctx.lineTo((1*100+width/2), 3.5*-100+height/.87);
+			ctx.lineTo((1*100+width/2), 1.2*-100+height/.87);
+			ctx.lineTo((-1*100+width/2), 1.2*-100+height/.87);
+			ctx.lineTo((-1*100+width/2), 3.5*-100+height/.87);
+			ctx.stroke();
+		<% end %>
+    </canvas>
+
+    </div>
+
+
+
+
+<div class="heatmapContainer" id="swings">
+
+  <%= javascript_tag do %>
+    // create configuration object
+    var height = document.getElementsByClassName('heatmapContainer')[0].clientHeight;
+    var width = document.getElementsByClassName('heatmapContainer')[0].clientWidth;
+var config = {
+  container: document.getElementById('swings'),
+  height: height,
+  width: width,
+  radius: 35,
+  maxOpacity: .5,
+  minOpacity: 0,
+  gradient:{ 0.333: "#0000FF", 0.600: "#00FFFF", 0.7500: "#00FF00", 0.93: "#FFFF00", 0.97: "#ff8d00", 0.99: "#FF0000"},
+
+};
+// create heatmap with configuration
+var heatmapInstance = h337.create(config);
+
+var data = {
+  max: 2.5,
+  min: 0,
+  data: [
+		<% @swings.try(:each) do |event| %>
+		{ x: <%= event.px.to_json.html_safe %>*100+width/2
+		, y: <%= event.pz.to_json.html_safe %>*-100+height/.87
+		, value: 1 },
+	<% end %>
+  ]
+};
+
+
+heatmapInstance.setData(data);
+
+    <% end %>
+
+
+	<canvas id="swing-zone" height="400" width="400">
+		<%= javascript_tag do %>
+
+		    var height = document.getElementsByClassName('heatmapContainer')[0].clientHeight;
+    		var width = document.getElementsByClassName('heatmapContainer')[0].clientWidth;
+
+
+			var c = document.getElementById("swing-zone");
+			var ctx = c.getContext("2d");
+			ctx.beginPath();
+			ctx.moveTo((-1*100+width/2), 3.5*-100+height/.87);
+			ctx.lineTo((1*100+width/2), 3.5*-100+height/.87);
+			ctx.lineTo((1*100+width/2), 1.2*-100+height/.87);
+			ctx.lineTo((-1*100+width/2), 1.2*-100+height/.87);
+			ctx.lineTo((-1*100+width/2), 3.5*-100+height/.87);
+			ctx.stroke();
+		<% end %>
+    </canvas>
+
+    </div>
+
+</div>
+
+
