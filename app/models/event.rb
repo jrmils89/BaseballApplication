@@ -4,6 +4,50 @@ class Event < ActiveRecord::Base
 
 	self.table_name = "event_list"
 	self.primary_key = "pitch_id"
+	
+	enum game_type: {
+		"Regular Season": 1
+	}
+	enum batter_throws: {
+		"Right": "R",
+		"Left": "L",
+		"Switch": "S"
+	}
+	enum stand: {
+		"Right": "R",
+		"Left": "L",
+		"Switch": "S"
+	}
+
+	enum stand: {
+		"Right": "R",
+		"Left": "L",
+		"Switch": "S"
+	}
+
+	enum pitcher_throws: {
+		"Right": "R",
+		"Left": "L",
+		"Switch": "S"
+	}
+	enum pitch_type_str: {
+		"All Fastballs": ["FA","FF","FT"],
+		"Fastball": "FA",
+		"Four-Seam Faseball": "FF",
+		"Two-Seam Fastball": "FT",
+		"Sinker": "SI",
+		"Curveball": "CU",
+		"Slider": "SL",
+		"Change-up": "CH",
+		"Forkball": "FO",
+		"Cutter": "FC",
+		"Split-Finger": "FS",
+		"Knuckle-Curve": "KC",
+		"Knuckleball": "KN",
+		"Other": ["EP","SC","UN","IN","AB","PO"],
+		"None": nil	
+	}
+
 
 	def self.batting_heatmap
 		select(:px,:pz, :game_date, :event_des)
