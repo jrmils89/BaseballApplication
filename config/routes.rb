@@ -3,10 +3,11 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
   resources :events
   # You can have the root of your site routed with "root"
-   root 'event#heatmap'
+   root 'event#list'
 
    get 'event_list' => 'event#show'
    get 'heatmap' => 'event#list'
+   get 'team_heatmaps' => 'event#team_heatmaps'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

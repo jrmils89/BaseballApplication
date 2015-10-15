@@ -21,8 +21,25 @@ class EventController < ApplicationController
 		else 
 			render :status => 404
 		end
-
 	end
+
+	def team_heatmaps
+		if filtering_params(params).values.any?
+		@events = Event.all
+			filtering_params(params).each do |key, value|
+			@events = @events.public_send(key, value) if value.present?
+			end
+		@batters = @events.order(:batter_last, :batter_first).group_by {|b| ["batter"=>b.batter, "batter_first"=>b.batter_first, "batter_last"=>b.batter_last]}
+		respond_to do |format|
+		format.html # show.html.erb
+		format.json { render :json => @batters }
+		end
+		else
+		render :status => 404
+		end
+	end
+
+
 
 	
 
@@ -33,11 +50,11 @@ class EventController < ApplicationController
 	end
 
 	def event_params
-	  params.require(:event).permit(:game_year, :pitch_id_two, :batter, :pitch_type)
+	  params.require(:event).permit(:game_year, :pitch_id_two, :batter, :pitch_type, :game_id)
 	end
 
 	def filtering_params(params)
-		params.slice(:game_year, :pitch_id_two, :batter, :pitch_type)
+		params.slice(:game_year, :pitch_id_two, :batter, :pitch_type, :game_id)
 	end
 
 end
