@@ -37,13 +37,6 @@ class Event < ActiveRecord::Base
 		where(event_des: ['Home Run','Triple', 'Double', 'Single'])
 	end
 
-	def self.abstract_info
-		self.map { |b| [Hash["batter"=>b.batter, "pitcher"=>b.pitcher, "pitcher_last"=>b.pitcher_last, "pitcher_first"=>b.pitcher_first, 
-			"batter_last"=>b.batter_last, "bater_first"=>b.bater_first], b] }
-	end
-
-
-
 	def event_count
 	#determine how to weight event des value
 		case self.event_des 
