@@ -11,4 +11,6 @@
 /log/*
 !/log/.keep
 /tmp
+/lib/assets/templated-synchronous
 passwords.md
+.DS_Store

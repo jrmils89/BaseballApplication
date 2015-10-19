@@ -1,22 +1,22 @@
-<div class="heatmapContainer">
-    <%= javascript_tag do %>
-    // create configuration object
-var config = {
-  container: document.getElementsByClassName('heatmapContainer')[0],
-  height: document.getElementsByClassName('heatmapContainer')[0].clientHeight,
-  width: document.getElementsByClassName('heatmapContainer')[0].clientWidth,
-  radius: 20,
-  maxOpacity: .5,
-  minOpacity: 0,
-  gradient:{ 0.333: "#0000FF", 0.600: "#00FFFF", 0.800: "#00FF00", 0.933: "#FFFF00", 1.0: "#FF0000"},
-};
-// create heatmap with configuration
-var heatmapInstance = h337.create(config);
 
-var data = {
-  max: 2.1,
-  min: 0,
-  data: [
+<div class="heatmapContainer">
+	<%= javascript_tag do %>
+	// create configuration object
+	var config = {
+	container: document.getElementsByClassName('heatmapContainer')[0],
+	height: document.getElementsByClassName('heatmapContainer')[0].clientHeight,
+	width: document.getElementsByClassName('heatmapContainer')[0].clientWidth,
+	radius: 20,
+	maxOpacity: .5,
+	minOpacity: 0,
+	gradient:{ 0.333: "#0000FF", 0.600: "#00FFFF", 0.800: "#00FF00", 0.933: "#FFFF00", 1.0: "#FF0000"},
+	};
+	// create heatmap with configuration
+	var heatmapInstance = h337.create(config);
+	var data = {
+	max: 2.1,
+	min: 0,
+	data: [
 	{x: 174, y:286, value:2.1},
 	{x: 113, y:252, value:2.1},
 	{x: 165, y:200, value:2.1},
@@ -614,24 +614,21 @@ var data = {
 	{x: 137, y:265, value:0},
 	{x: 118, y:145, value:0},
 	{x: 186, y:254, value:0},
-  ]
-};
-
-
-heatmapInstance.setData(data);
-    <% end %>
-    <canvas id="strike-zone" height="500" width="300">
+	]
+	};
+	heatmapInstance.setData(data);
+	<% end %>
+	<canvas id="strike-zone" height="500" width="300">
 		<%= javascript_tag do %>
-			var c = document.getElementById("strike-zone");
-			var ctx = c.getContext("2d");
-			ctx.beginPath();
-			ctx.moveTo(100, 150);
-			ctx.lineTo(200, 150);
-			ctx.lineTo(200, 350);
-			ctx.lineTo(100, 350);
-			ctx.lineTo(100, 150);
-			ctx.stroke();
+		var c = document.getElementById("strike-zone");
+		var ctx = c.getContext("2d");
+		ctx.beginPath();
+		ctx.moveTo(100, 150);
+		ctx.lineTo(200, 150);
+		ctx.lineTo(200, 350);
+		ctx.lineTo(100, 350);
+		ctx.lineTo(100, 150);
+		ctx.stroke();
 		<% end %>
-    </canvas>
-
+	</canvas>
 </div>

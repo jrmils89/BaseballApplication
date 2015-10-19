@@ -2,13 +2,38 @@
 <html>
 <head>
   <title>BaseballApplication</title>
+  <link href="//fonts.googleapis.com/css?family=Lato:700,300" rel="stylesheet" type="text/css">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+	<div id="header" style="padding-bottom: 5px;text-align:right;">
+    	<ul id="top-nav" class="slimmenu">
+			<li>
+            	<%= link_to 'Home', home_path %>
+        	</li>
+			<li>
+            	<%= link_to 'About', about_path %>
+        	</li>
+			<li>
+            	<%= link_to 'Contact', contact_path %>
+        	</li>
+			<li>
+            	<%= link_to 'Heatmaps', heatmap_path %>
+      	</li>
+        <li>
+          <%= link_to 'About', about_path %>   
+          <ul>
+            <li>
+                <%= link_to 'About Two', about_path %>   
+            </li>
+          </ul>
+        </li>
+		</ul>
+	</div>
+
 
 <%= yield %>
-
 </body>
 </html>

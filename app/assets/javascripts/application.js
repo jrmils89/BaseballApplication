@@ -15,3 +15,8 @@
 //= require turbolinks
 //= require_tree .
 //= require heatmap/heatmap
+//= require css/custom-script
+//= require css/custom-script.min
+//= require css/freewall.min
+//= require css/jquery.cycle2.min
+//= require css/jquery.slimmenu.min

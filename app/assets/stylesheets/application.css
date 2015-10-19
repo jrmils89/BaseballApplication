@@ -12,6 +12,11 @@
  *
  *= require_tree .
  *= require_self
+ *= require template-css/normalize
+ *= require template-css/normalize.min.css
+ *= require template-css/style.lite.css
+ *= require template-css/style.lite.min.css
+
  */
 
 .heatmapContainer    {	

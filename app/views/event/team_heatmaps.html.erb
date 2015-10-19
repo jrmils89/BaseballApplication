@@ -1,21 +1,19 @@
-    <% @batters.each do |batter| %>
-	    <p><%= batter[0][0]["batter_last"]+", "+batter[0][0]["batter_first"]%></p>
-	  	<% @events.each do |e| %>
-
+<% @batters.each do |batter| %>
+<p><%= batter[0][0]["batter_last"]+", "+batter[0][0]["batter_first"]%></p>
+<% @events.each do |e| %>
 <table>
-    <tbody>
-      <tr>
-      	<td>Text</td>
-        <td><%= e.pitch_des %></td>
-      </tr>
-          <% end %>
+  <tbody>
+    <tr>
+      <td>Text</td>
+      <td><%= e.pitch_des %></td>
+    </tr>
+    <% end %>
     <% end %>
   </tbody>
 </table>
-
-  <tbody>
-    <% @batters.each do |batter| %>
-      <tr>
-      </tr>
-    <% end %>
-  </tbody>
+<tbody>
+  <% @batters.each do |batter| %>
+  <tr>
+  </tr>
+  <% end %>
+</tbody>
