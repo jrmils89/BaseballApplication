@@ -50,11 +50,11 @@ class EventController < ApplicationController
 	end
 
 	def event_params
-	  params.require(:event).permit(:game_year, :pitch_id_two, :batter, :pitch_type, :game_id)
+	  params.require(:event).permit(:game_year, :pitch_id_two, :batter, :pitch_type, :game_id, :batter_name, :pitcher_name)
 	end
 
 	def filtering_params(params)
-		params.slice(:game_year, :pitch_id_two, :batter, :pitch_type, :game_id)
+		params.slice(:game_year, :pitch_id_two, :batter, :pitch_type, :game_id, :batter_name, :pitcher_name)
 	end
 
 end

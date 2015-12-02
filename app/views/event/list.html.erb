@@ -1,11 +1,16 @@
   <%= form_tag("/heatmap", method: "get") do %>
-  <%= label_tag(:batter, "Batter:") %>
-  <%= number_field_tag(:batter) %>
+  <%= label_tag(:batter_name, "Batter:") %>
+  <%= select_tag(:batter_name, options_for_select(player_names), { multiple: false, include_blank: true }) %>
+  <%= label_tag(:pitcher_name, "Pitcher:") %>
+  <%= select_tag(:pitcher_name, options_for_select(player_names), { multiple: false, include_blank: true }) %>
   <%= label_tag(:game_year, "Game Year:") %>
   <%= number_field_tag(:game_year) %>
   <%= submit_tag("Search", class: "buton") %>
   <% end %>
   <div class="heatmapWrapper">
+      <div>
+      <p style="text-align: center">Balls In Play</p>
+
     <div class="heatmapContainer" id="heatmap">
       <%= javascript_tag do %>
       // create configuration object
@@ -51,6 +56,9 @@
         <% end %>
       </canvas>
     </div>
+  </div>
+    <div>
+      <p style="text-align: center">Swing & Miss</p>
     <div class="heatmapContainer" id="swings">
       <%= javascript_tag do %>
       // create configuration object
@@ -96,4 +104,5 @@
         <% end %>
       </canvas>
     </div>
+  </div>
   </div>
