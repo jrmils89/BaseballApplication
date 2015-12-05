@@ -1,7 +1,7 @@
 class Event < ActiveRecord::Base
 	scope :game_year, ->(game_year) { where(:game_year => game_year) }
 	scope :batter, ->(batter) { where(:batter => batter) }
-	scope :pitcher, ->(batter) { where(:pitcher => pitcher) }
+	scope :pitcher, ->(pitcher) { where(:pitcher => pitcher) }
 	scope :game_id, ->(game) { where(:game_id => game) }
 	scope :batter_name, ->(batter_name) { where(:batter_name => batter_name) }
 	scope :pitcher_name, ->(pitcher_name) { where(:pitcher_name => pitcher_name) }
