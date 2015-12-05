@@ -17,17 +17,17 @@ default: &default
 
 development:
   <<: *default
-  password: baseballpassword
-  database: pitch_fx
-  socket: /tmp/mysql.sock
-
+  # export BaseballApplication_DevDB=BaseballApplication_development
+  database: <%= ENV['BaseballApplication_DevDB'] %>
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  socket: <%= ENV['MYSQL_SOCKET'] %>
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: BaseballApplication_test
+  database: BaseballApplication_development
   password: <%= ENV['DATABASE_PASSWORD'] %>
   socket: /var/run/mysqld/mysqld.sock
 
