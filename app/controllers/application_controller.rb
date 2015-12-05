@@ -5,8 +5,7 @@ class ApplicationController < ActionController::Base
 
 
 def player_names
-  	a = Player.uniq.pluck(:first, :last).sort_by! {|u| u.to_s}
-  	a.map! {|x| x.join(" ")}
+  	a = Player.uniq.pluck(:names, :eliasid).sort_by! {|u| u.to_s}
 	a = a.take_while {|x| x != nil}
   end
   helper_method :player_names
