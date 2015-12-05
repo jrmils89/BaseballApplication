@@ -1,31 +1,13 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Ruby 2.2.0
+Rails 4.2.0
 
-Things you may want to cover:
+Pitch F/x Data is happily scraped by Jeff Zimmerman and the folks at [Baseball Heatmaps](http://www.baseballheatmaps.com/)
 
-* Ruby version
+Heatmap Library Courtesy Of [Patrick Wied](http://www.patrick-wied.at/static/heatmapjs)
 
-	ruby 2.2.0p0 (2014-12-25 revision 49005) [x86_64-darwin14]
-	Rails 4.2.0
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
+CSS Template Courtesy Of [Majuterus](http://majuter.us)
 
 Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.
