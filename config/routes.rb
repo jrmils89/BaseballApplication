@@ -8,7 +8,7 @@ Rails.application.routes.draw do
    get 'about' => 'welcome#about'
    get 'contact' => 'welcome#contact'
    get 'event_list' => 'event#show'
-   get 'heatmap' => 'event#list'
+   get 'heatmap' => 'event#matchups'
    get 'team_heatmaps' => 'event#team_heatmaps'
 
   # Example of regular route:

@@ -9,7 +9,7 @@ class EventController < ApplicationController
 		end
 	end
 
-	def list
+	def matchups
 		if filtering_params(params).values.any?
 			@events = Event.batting_heatmap.where(pitch_type: 'X')
 			swings = 'Swinging Strik%'
