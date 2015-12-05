@@ -1,11 +1,11 @@
-  <%= form_tag("/heatmap", method: "get") do %>
+  <%= form_tag("/heatmap", method: "get", enforce_utf8: false) do %>
   <%= label_tag(:batter_name, "Batter:") %>
   <%= select_tag(:batter_name, options_for_select(player_names), { multiple: false, include_blank: true }) %>
   <%= label_tag(:pitcher_name, "Pitcher:") %>
   <%= select_tag(:pitcher_name, options_for_select(player_names), { multiple: false, include_blank: true }) %>
   <%= label_tag(:game_year, "Game Year:") %>
   <%= number_field_tag(:game_year) %>
-  <%= submit_tag("Search", class: "buton") %>
+  <%= submit_tag("Search", class: "buton", name: nil) %>
   <% end %>
   <div class="heatmapWrapper">
       <div>
