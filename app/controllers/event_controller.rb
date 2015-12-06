@@ -19,7 +19,7 @@ class EventController < ApplicationController
 			@swings = @swings.public_send(key, value) if value.present?
 			end
 		else 
-			render :status => 404
+			render template: "event/matchups"
 		end
 	end
 
