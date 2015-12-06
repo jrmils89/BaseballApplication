@@ -5,6 +5,10 @@
   <link href="//fonts.googleapis.com/css?family=Lato:700,300" rel="stylesheet" type="text/css">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <% if Rails.env == "production" %>
+  <%= render partial: "partials/google_analytics" %>
+  <%= render partial: "partials/google_analytics_pageview" %>
+  <% end %>
   <%= csrf_meta_tags %>
 </head>
 <body>
