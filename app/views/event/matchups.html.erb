@@ -10,9 +10,17 @@
   <div class="heatmapWrapper">
       <div>
       <p style="text-align: center">Balls In Play</p>
-
+      <p style="text-align: center">Number of Events Tracked: <%= @events.count(:px) %></p>
     <div class="heatmapContainer" id="heatmap">
       <%= javascript_tag do %>
+      // determine what the max heatmap value should be
+      var events_count = <%= @events.count(:px) %>;
+      var max_count;
+      if (events_count <= 50) {
+      max_count = 2.3;
+      } else {
+      max_count = 6;
+      }
       // create configuration object
       var height = document.getElementsByClassName('heatmapContainer')[0].clientHeight;
       var width = document.getElementsByClassName('heatmapContainer')[0].clientWidth;
@@ -28,7 +36,7 @@
       // create heatmap with configuration
       var heatmapInstance = h337.create(config);
       var data = {
-      max: 6,
+      max: max_count,
       min: 0,
       data: [
       <% @events.try(:each) do |event| %>
@@ -59,8 +67,17 @@
   </div>
     <div>
       <p style="text-align: center">Swing & Miss</p>
+      <p style="text-align: center">Number of Events Tracked: <%= @swings.count(:px) %></p>
     <div class="heatmapContainer" id="swings">
       <%= javascript_tag do %>
+      // determine what the max heatmap value should be
+      var swing_count = <%= @swings.count(:px) %>;
+      var max_count;
+      if (swing_count <= 20) {
+      max_count = 1.2;
+      } else {
+      max_count = 2.5;
+      }
       // create configuration object
       var height = document.getElementsByClassName('heatmapContainer')[0].clientHeight;
       var width = document.getElementsByClassName('heatmapContainer')[0].clientWidth;
@@ -76,7 +93,7 @@
       // create heatmap with configuration
       var heatmapInstance = h337.create(config);
       var data = {
-      max: 2.5,
+      max: max_count,
       min: 0,
       data: [
       <% @swings.try(:each) do |event| %>
