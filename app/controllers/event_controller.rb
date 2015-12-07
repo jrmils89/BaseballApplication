@@ -19,6 +19,8 @@ class EventController < ApplicationController
 			@swings = @swings.public_send(key, value) if value.present?
 			end
 		else 
+			@events = []
+			@swings = []
 			render template: "event/matchups"
 		end
 	end
