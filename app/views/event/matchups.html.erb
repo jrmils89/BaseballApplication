@@ -16,10 +16,17 @@
       // determine what the max heatmap value should be
       var events_count = <%= @events.count(:px) %>;
       var max_count;
+      var radius
       if (events_count <= 50) {
       max_count = 2.3;
-      } else {
-      max_count = 6;
+      radius = 40;
+      } else if (events_count >= 400)  {
+      radius = 20;
+      max_count = 3.5;
+      }
+      else {
+      radius = 30;
+      max_count = 4.5;
       }
       // create configuration object
       var height = document.getElementsByClassName('heatmapContainer')[0].clientHeight;
@@ -28,7 +35,7 @@
       container: document.getElementById('heatmap'),
       height: height,
       width: width,
-      radius: 40,
+      radius: radius,
       maxOpacity: .5,
       minOpacity: 0,
       gradient:{ 0.333: "#0000FF", 0.600: "#00FFFF", 0.7500: "#00FF00", 0.93: "#FFFF00", 0.97: "#ff8d00", 0.99: "#FF0000"},
@@ -73,10 +80,16 @@
       // determine what the max heatmap value should be
       var swing_count = <%= @swings.count(:px) %>;
       var max_count;
+      var radius;
       if (swing_count <= 20) {
       max_count = 1.2;
+      radius = 35;
+      } else if (swing_count >= 150) {
+      max_count = 2.2;
+      radius = 35;
       } else {
-      max_count = 2.5;
+      max_count = 1.7;
+      radius = 40;
       }
       // create configuration object
       var height = document.getElementsByClassName('heatmapContainer')[0].clientHeight;
@@ -85,7 +98,7 @@
       container: document.getElementById('swings'),
       height: height,
       width: width,
-      radius: 35,
+      radius: radius,
       maxOpacity: .5,
       minOpacity: 0,
       gradient:{ 0.333: "#0000FF", 0.600: "#00FFFF", 0.7500: "#00FF00", 0.93: "#FFFF00", 0.97: "#ff8d00", 0.99: "#FF0000"},
