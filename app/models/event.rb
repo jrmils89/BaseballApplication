@@ -40,6 +40,10 @@ class Event < ActiveRecord::Base
 		"None": nil	
 	}
 
+	def self.default_scope
+		limit(900000).order(game_date: :desc)
+	end
+
 
 	def self.batting_heatmap
 		select(:px,:pz, :game_date, :event_des)
