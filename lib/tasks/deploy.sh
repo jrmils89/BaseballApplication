@@ -22,6 +22,8 @@ sudo service nginx restart
 
 echo "Nginx Restarted"
 
+curl www.baseballapplication.com
+
 passenger-config restart-app /home/jesse/BaseballApplication
 
 echo "Passenger Restarted. Deploy Complete"
