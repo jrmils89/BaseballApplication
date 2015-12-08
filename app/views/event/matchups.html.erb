@@ -1,5 +1,6 @@
-  <table>
     <%= form_tag("/heatmap", method: "get", enforce_utf8: false) do %>
+      <table>
+
     <tr>
   <td><%= label_tag(:batter, "Batter:") %></td>
   <td><%= select_tag(:batter, options_for_select(player_names), { multiple: false, include_blank: true }) %></td>
@@ -17,10 +18,11 @@
   <td><%= number_field_tag(:game_year) %></td>
   </tr>
   <tr>
-  <td><%= submit_tag("Search", class: "buton", name: nil) %></td>
+  <td><%= submit_tag("Search", class: "buton", type: "button", name: nil) %></td>
   </tr>
-  <% end %>
-</table>
+  </table>
+
+<% end %>
   <div class="heatmapWrapper">
       <div>
       <p style="text-align: center">Balls In Play</p>

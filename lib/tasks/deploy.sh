@@ -16,4 +16,12 @@ sleep 2
 
 sudo nginx -s reload
 
-echo "Nginx Reloaded. Deploy Complete"
+echo "Nginx Reloaded"
+
+sudo service nginx restart
+
+echo "Nginx Restarted"
+
+passenger-config restart-app /home/jesse/BaseballApplication
+
+echo "Passenger Restarted. Deploy Complete"
