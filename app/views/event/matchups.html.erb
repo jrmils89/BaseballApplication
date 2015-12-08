@@ -31,14 +31,18 @@
       <%= javascript_tag do %>
       // determine what the max heatmap value should be
       var events_count = <%= @events.count(:px) %>;
-      var max_count;
+    var max_count;
       var radius
       if (events_count <= 50) {
       max_count = 2.3;
       radius = 40;
-      } else if (events_count >= 400)  {
+      } else if (events_count >= 400 && events_count < 5000)  {
       radius = 20;
       max_count = 3.5;
+      }
+      else if (events_count >= 5000)  {
+      radius = 25;
+      max_count = 25;
       }
       else {
       radius = 30;
@@ -100,10 +104,15 @@
       if (swing_count <= 20) {
       max_count = 1.2;
       radius = 35;
-      } else if (swing_count >= 150) {
+      } else if (swing_count >= 150 && swing_count < 5000) {
       max_count = 2.2;
       radius = 35;
-      } else {
+      } 
+      else if (swing_count >= 5000)  {
+      radius = 20;
+      max_count = 25;
+      }
+      else {
       max_count = 1.7;
       radius = 40;
       }
