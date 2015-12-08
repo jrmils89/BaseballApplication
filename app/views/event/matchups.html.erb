@@ -1,12 +1,29 @@
-  <%= form_tag("/heatmap", method: "get", enforce_utf8: false) do %>
-  <%= label_tag(:batter, "Batter:") %>
-  <%= select_tag(:batter, options_for_select(player_names), { multiple: false, include_blank: true }) %>
-  <%= label_tag(:pitcher, "Pitcher:") %>
-  <%= select_tag(:pitcher, options_for_select(player_names), { multiple: false, include_blank: true }) %>
-  <%= label_tag(:game_year, "Game Year:") %>
-  <%= number_field_tag(:game_year) %>
-  <%= submit_tag("Search", class: "buton", name: nil) %>
+  <% flash.each do |name, msg| -%>
+      <%= content_tag :div, msg, class: name %>
+    <% end -%>
+  <table>
+    <%= form_tag("/heatmap", method: "get", enforce_utf8: false) do %>
+    <tr>
+  <td><%= label_tag(:batter, "Batter:") %></td>
+  <td><%= select_tag(:batter, options_for_select(player_names), { multiple: false, include_blank: true }) %></td>
+  <td><%= label_tag(:pitcher, "Pitcher:") %></td>
+  <td><%= select_tag(:pitcher, options_for_select(player_names), { multiple: false, include_blank: true }) %></td>
+  <td><%= label_tag(:pitch_type, "Pitch Type:") %></td>
+  <td><%= select_tag(:pitch_type, options_for_select(Event.pitch_type_strs.keys), { multiple: false, include_blank: true }) %></td>
+  </tr>
+  <tr>
+  <td><%= label_tag(:bat_side, "Batting Side:") %></td>
+  <td><%= select_tag(:bat_side, options_for_select(Event.hands.keys), { multiple: false, include_blank: true }) %></td>
+  <td><%= label_tag(:pitch_hand, "Pitcher Hand:") %></td>
+  <td><%= select_tag(:pitch_hand, options_for_select(Event.hands.keys), { multiple: false, include_blank: true }) %></td>
+  <td><%= label_tag(:game_year, "Game Year:") %></td>
+  <td><%= number_field_tag(:game_year) %></td>
+  </tr>
+  <tr>
+  <td><%= submit_tag("Search", class: "buton", name: nil) %></td>
+  </tr>
   <% end %>
+</table>
   <div class="heatmapWrapper">
       <div>
       <p style="text-align: center">Balls In Play</p>

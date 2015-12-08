@@ -5,7 +5,9 @@ class Event < ActiveRecord::Base
 	scope :game_id, ->(game) { where(:game_id => game) }
 	scope :batter_name, ->(batter_name) { where(:batter_name => batter_name) }
 	scope :pitcher_name, ->(pitcher_name) { where(:pitcher_name => pitcher_name) }
-
+	scope :pitch_type, -> (pitch_type) {where(:pitch_type_str => Event.pitch_type_strs[pitch_type])}
+	scope :bat_side, -> (bat_side) {where(:stand => Event.hands[bat_side])}
+	scope :pitch_hand, -> (pitch_hand) {where(:pitcher_throws => Event.hands[pitch_hand])}
 
 	self.table_name = "event_list"
 	self.primary_key = "pitch_id"
@@ -13,9 +15,16 @@ class Event < ActiveRecord::Base
 	enum game_type: {
 		"Regular Season": 1
 	}
+
+	enum hand: {
+		"Right": "R",
+		"Left": "L",
+		"Switch": "S"
+	}
+
 	enum pitch_type_str: {
 		"All Fastballs": ["FA","FF","FT"],
-		"Fastball": "FA",
+		"Fastball Unclassified": "FA",
 		"Four-Seam Faseball": "FF",
 		"Two-Seam Fastball": "FT",
 		"Sinker": "SI",
