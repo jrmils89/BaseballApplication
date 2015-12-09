@@ -227,6 +227,11 @@ ActiveRecord::Schema.define(version: 20141207165931) do
 
   add_index "pitches", ["ab_id"], name: "ab_id", using: :btree
 
+  create_table "player_names", id: false, force: :cascade do |t|
+    t.string  "names",   limit: 41
+    t.integer "eliasid", limit: 3,  null: false
+  end
+
   create_table "players", primary_key: "eliasid", force: :cascade do |t|
     t.string  "first",    limit: 20, null: false
     t.string  "last",     limit: 20, null: false

@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Jesse's Blog Posts</h1>
+
+
+<% @posts.each do |post| %>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="4"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+      <tr>
+        <h1><%= post.title %></h1>
+      </tr>
+        <td><%= simple_format(post.body) %></td>
+      </tr>
+  </tbody>
+</table>
+    <% end %>
+
+<br>
