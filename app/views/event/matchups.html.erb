@@ -3,9 +3,9 @@
 
     <tr>
   <td><%= label_tag(:batter, "Batter:") %></td>
-  <td><%= select_tag(:batter, options_for_select(player_names), { multiple: false, include_blank: true }) %></td>
+  <td><%= select_tag(:batter, options_for_select(EventHelper.playernames), { multiple: false, include_blank: true }) %></td>
   <td><%= label_tag(:pitcher, "Pitcher:") %></td>
-  <td><%= select_tag(:pitcher, options_for_select(player_names), { multiple: false, include_blank: true }) %></td>
+  <td><%= select_tag(:pitcher, options_for_select(EventHelper.playernames), { multiple: false, include_blank: true }) %></td>
   <td><%= label_tag(:pitch_type, "Pitch Type:") %></td>
   <td><%= select_tag(:pitch_type, options_for_select(Event.pitch_type_strs.keys), { multiple: false, include_blank: true }) %></td>
   </tr>
